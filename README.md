@@ -11,14 +11,27 @@ A4 document ready for binding. Schematically:
 
 ![Graphic explanation of what the script does](booklet.png "Booklet graphic")
 
-Usage: change the line with the filename into the one you'd like to page, then
-run `pdftex booklet.tex`. This will produce a file called booklet.pdf in your
-current directory.
+## Usage
 
-If you're a Windows user, change the name into the absolute path of your PDF
-file, using forward slashes, such as `C:/alfred/input.pdf`. Then go to the
-directory containing `pdfTeX` and run something like `pdftex
-c:\alfred\booklet.tex`.
+Linux users: change the line with the filename into the one you'd like to page,
+then run:
+
+```sh
+pdftex booklet.tex
+```
+
+This will produce a file called *booklet.pdf* in your current directory.
+
+Windows users: change the line with the filename into the absolute path of your
+PDF file, using forward slashes, such as `C:/alfred/input.pdf`. Then go to the
+directory containing `pdfTeX` and run something like:
+
+```sh
+pdftex c:\alfred\booklet.tex
+```
+
+You'll find a file named *booklet.pdf* somewhere, either in the current
+directory or in the directory where the script is located.
 
 ## A6 booklets, A4 booklets, A3 booklets, A2 booklets....
 
