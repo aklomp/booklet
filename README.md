@@ -1,19 +1,20 @@
 # Booklet: a script for making A5 booklets on A4 paper
 
-Here's a little TeX script I wrote to scratch an itch of mine: how to
-consolidate an A5 PDF document into an A4 PDF ready to throw through a duplex
-printer and bind into a booklet? I've done it manually in my highschool days and
-it's no fun. The first and last page have to be adjacent on one sheet, as do the
-second page and the one before last. It quickly gets messy from there. So I
-wrote this little script to automate it for me. It takes an A5 PDF file as input
-and places the proper pages adjacently, until the PDF runs out. The result is an
-A4 document ready for binding. Schematically:
+Here's a little TeX script I wrote to scratch an itch of mine: how to repage an
+A5 PDF document into an A4 PDF ready to throw through a duplex printer and
+staple into a booklet? In highschool I used to do it by hand to get a master
+copy of the school paper that I layouted, so I know what an arduous job it is.
+The first and last page have to be adjacent on one sheet, as do the second page
+and the one before last, and it quickly gets messy from there. Years later I
+finally wrote this little script to automate it for me. It takes an A5 PDF file
+as input and places the proper pages adjacent, until the PDF runs out. The
+result is an A4 document ready for binding. Schematically:
 
 ![Graphic explanation of what the script does](booklet.png "Booklet graphic")
 
 ## Usage
 
-Linux users: change the line with the filename into the one you'd like to page,
+Linux users: change the filename at the top into the one you'd like to process,
 then run:
 
 ```sh
@@ -33,7 +34,7 @@ pdftex c:\alfred\booklet.tex
 You'll find a file named *booklet.pdf* somewhere, either in the current
 directory or in the directory where the script is located.
 
-## A6 booklets, A4 booklets, A3 booklets, A2 booklets....
+## Not just A5 and A4, but any paper size you like
 
 This script is by no means restricted to A5 booklets. All it does is take an
 input file and embed its pages in the correct order into a new document. You'll

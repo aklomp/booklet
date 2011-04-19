@@ -1,10 +1,11 @@
 % Run this file with pdftex, it produces a file named
 % booklet.pdf in the current directory. Alfred Klomp, 2006.
+% Support for non-multiples of four pages by Jakob Lund, 2011.
+% Version 1.1
 
 \def\bookletfile{/home/alfred/mydocument.pdf}
 
 \newcount\numpages
-\newcount\halfnumpages
 \newcount\fcount         % forwards count, starts at page 1 and counts up
 \newcount\bcount         % backwards count, starts at last page and counts down
 \newcount\leftright      % is the page with the lowest number on the left?
@@ -13,16 +14,19 @@
 
 \pdfpagewidth  297mm     % landscape A4 format
 \pdfpageheight 210mm
-  
+
 \pdfximage {\bookletfile}
 \numpages=\pdflastximagepages
-\halfnumpages=\numpages
-\divide\halfnumpages by 2
+
 \fcount=1
 \bcount=\numpages
+\advance\bcount by 3     % round up to multiple of 4
+\divide\bcount by 4
+\multiply\bcount by 4
 \leftright=0
 \pdfhorigin=0bp
 \pdfvorigin=0bp
+\advance\numpages by 1
 
 \loop
   \ifnum\leftright=0
@@ -35,14 +39,18 @@
     \leftright=0
   \fi
   \shipout\hbox to \pdfpagewidth {%
-    \pdfximage height \pdfpageheight page \pagea {\bookletfile}%
-    \pdfrefximage\pdflastximage%
+    \ifnum\pagea<\numpages%
+      \pdfximage height \pdfpageheight page \pagea {\bookletfile}%
+      \pdfrefximage\pdflastximage%
+    \fi%
     \hfil%
-    \pdfximage height \pdfpageheight page \pageb {\bookletfile}%
-    \pdfrefximage\pdflastximage%
-  }
+    \ifnum\pageb<\numpages%
+      \pdfximage height \pdfpageheight page \pageb {\bookletfile}%
+      \pdfrefximage\pdflastximage%
+    \fi%
+  }%
   \advance\fcount by 1
   \advance\bcount by -1
-  \ifnum\bcount>\halfnumpages\repeat
+  \ifnum\fcount<\bcount\repeat
 
 \end
