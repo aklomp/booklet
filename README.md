@@ -45,3 +45,7 @@ are the height and width of the output, in this case A4 landscape. You're free
 to redefine those sizes if you want to make different sized booklets, like A6
 booklets on A5 paper (210mm wide, 148mm high), or A4 booklets on A3 paper (420mm
 wide, 297mm high), or some other weird configuration.
+
+## License
+
+This repo is licensed under the [MIT License](https://opensource.org/licenses/MIT).
